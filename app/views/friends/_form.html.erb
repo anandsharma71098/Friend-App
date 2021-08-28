@@ -1,0 +1,40 @@
+<% if @friend.errors.any? %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <h4 class="alert-heading">The following errors prevented the article from being saved</h4>
+        <ul>
+        <% @friend.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>  
+        </ul>  
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+<% end %>
+<%= form_with(model: @friend, local:true) do |f| %>
+    <div class="field form-group">
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name, class: "form-control", placeholder: "Enter First Name" %>
+    </div>
+    <div class="field form-group">
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name, class: "form-control", placeholder: "Enter Last Name" %>
+    </div>
+    <div class="field form-group">
+        <%= f.label :email %>
+        <%= f.text_field :email, class: "form-control", placeholder: "Enter Email" %>
+    </div>
+    <div class="field form-group">
+        <%= f.label :phone %>
+        <%= f.text_field :phone, class: "form-control", placeholder: "Enter Phone Number" %>
+    </div>
+    <div class="field form-group">
+        <%= f.label :twitter %>
+        <%= f.text_field :twitter, class: "form-control", placeholder: "Enter Twitter Id" %>
+    </div>
+
+    <div class="action">
+        <%= f.submit class: "btn btn-primary" %>
+    </div>
+    
+<% end %>
